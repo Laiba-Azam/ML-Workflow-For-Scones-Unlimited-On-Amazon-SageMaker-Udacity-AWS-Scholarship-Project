@@ -32,7 +32,7 @@ def lambda_handler(event, context):
             "inferences": []
         }
     }
-'''A Function To proform inference'''    
+'''A Function To perform inference.I Got help from stackoverflow, youtube and git repos to find out how to use sagemaker in lambda function and send one lambda function output to other lambda function next to it'''    
 
 import json
 import base64
