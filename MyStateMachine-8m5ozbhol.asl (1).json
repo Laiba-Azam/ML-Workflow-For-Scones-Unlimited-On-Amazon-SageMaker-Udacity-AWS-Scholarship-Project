@@ -1,0 +1,36 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "pre process",
+  "States": {
+    "pre process": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:995023898006:function:serializeImagedataUdaityProject:$LATEST"
+      },
+      "Next": "Inference"
+    },
+    "Inference": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:995023898006:function:lastClassificationImage:$LATEST"
+      },
+      "Next": "threshold checking"
+    },
+    "threshold checking": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:995023898006:function:inferenceImageData:$LATEST"
+      },
+      "End": true
+    }
+  }
+}
