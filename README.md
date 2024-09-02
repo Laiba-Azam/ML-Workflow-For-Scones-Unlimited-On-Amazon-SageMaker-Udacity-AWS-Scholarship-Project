@@ -1,0 +1,1 @@
+This project involved building an image classification model using AWS Sagemaker to distinguish bicycles from motorcycles. The model was deployed with supporting services created using AWS Lambda functions, and AWS Step Functions were used to compose the model and services into an event-driven application
